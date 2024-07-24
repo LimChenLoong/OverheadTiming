@@ -29,7 +29,7 @@ void HighPrecisionDelay(double milliseconds) {
     }
 }
 
-// Other alternatives
+/* ------- ALTERNATIVES ------- */
 
 // TimeBeginPeriod and TimeEndPeriod
 //void HighPrecisionDelay(double milliseconds) {
@@ -50,6 +50,8 @@ void HighPrecisionDelay(double milliseconds) {
 //    timeEndPeriod(1);  // Reset the timer resolution
 //}
 
+/*-----------------------------------------------------------*/
+
 // Busy Waiting (Spin Lock)
 //void HighPrecisionDelay(double milliseconds) {
 //    LARGE_INTEGER frequency;
@@ -62,6 +64,8 @@ void HighPrecisionDelay(double milliseconds) {
 //        QueryPerformanceCounter(&end);
 //    } while ((end.QuadPart - start.QuadPart) * 1000.0 / frequency.QuadPart < milliseconds);
 //}
+
+/*-----------------------------------------------------------*/
 
 // High-Resolution Timers (Multimedia Timers)
 //void CALLBACK TimerCallback(UINT uID, UINT uMsg, DWORD_PTR dwUser, DWORD_PTR dw1, DWORD_PTR dw2) {

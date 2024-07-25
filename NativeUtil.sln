@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 14 for Windows Desktop
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OverheadTiming", "OverheadTiming\OverheadTiming.vcxproj", "{FF3DC582-7929-4669-BF3C-6ECBAB499E54}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NativeUtil", "NativeUtil\NativeUtil.vcxproj", "{FF3DC582-7929-4669-BF3C-6ECBAB499E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

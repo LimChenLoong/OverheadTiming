@@ -15,6 +15,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 }
 
 void HighPrecisionDelay(double milliseconds) {
+
+	if (milliseconds <= 0)
+		return;
+
     LARGE_INTEGER frequency;
     LARGE_INTEGER start, end;
 

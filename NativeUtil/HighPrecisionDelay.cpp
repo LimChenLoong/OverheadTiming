@@ -1,7 +1,7 @@
 #include "HighPrecisionDelay.h"
 #include <windows.h>
-#include <timeapi.h>
-#include <mmsystem.h>
+//#include <timeapi.h>
+//#include <mmsystem.h>
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved) {
     switch (ul_reason_for_call) {
@@ -19,18 +19,22 @@ void HighPrecisionDelay(double milliseconds) {
 	if (milliseconds <= 0)
 		return;
 
-    LARGE_INTEGER frequency;
-    LARGE_INTEGER start, end;
+	LARGE_INTEGER frequency;
+	LARGE_INTEGER start, current;
 
-    QueryPerformanceFrequency(&frequency);
-    QueryPerformanceCounter(&start);
-    QueryPerformanceCounter(&end);
+	// Get the frequency of the high-resolution performance counter
+	QueryPerformanceFrequency(&frequency);
+	// Get the initial start time
+	QueryPerformanceCounter(&start);
 
-    double elapsedTime = (end.QuadPart - start.QuadPart) * 1000.0 / frequency.QuadPart;
-    double remainingTime = milliseconds - elapsedTime;
-    if (remainingTime > 0) {
-        Sleep((DWORD)remainingTime);
-    }
+	double elapsedTime = 0.0;
+
+	do {
+		// Get the current time
+		QueryPerformanceCounter(&current);
+		// Calculate the elapsed time in milliseconds
+		elapsedTime = (current.QuadPart - start.QuadPart) * 1000.0 / frequency.QuadPart;
+	} while (elapsedTime < milliseconds);
 }
 
 /* ------- ALTERNATIVES ------- */
